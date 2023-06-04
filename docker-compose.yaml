@@ -3,6 +3,14 @@ services:
   web:
     build: .
     ports: 
-    - "8000:8000"
+      - "8000:8000"
     container_name: martor_demo
+    networks:
+      - django-test
     restart: unless-stopped
+    volumes:
+      - ./:/app
+
+networks:
+  django-test:
+    external: true # may need to change this to true
